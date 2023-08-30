@@ -1,0 +1,24 @@
+--Selecciona las columnas film_id y title de la tabla film.
+SELECT film_id FROM film 
+
+--Selecciona 5 filas de la tabla film, obteniendo todas las columnas.
+SELECT * FROM film  LIMIT 5;
+--Selecciona filas de la tabla film donde film_id sea menor que 4.
+SELECT * FROM film  WHERE LIMIT <=4;
+
+-- ¿Qué película (id) tiene la mayor cantidad de actores?
+SELECT film_id, COUNT(actor_id) as actor_count FROM film_actor
+GROUP BY film_id
+ORDER BY actor_count DESC
+LIMIT 1;
+
+-- 18 ¿Cuál es la tarifa de alquiler promedio de las películas? 
+-- ¿Puedes redondear el resultado a 2 decimales?
+SELECT  ROUND(AVG(rental_rate),2) AS rental_rate_avg FROM film;
+
+-- 20. Selecciona los 10 actores que tienen los nombres 
+-- más largos (nombre y apellido combinados).
+SELECT first_name, last_name,  LENGTH(first_name || last_name) AS full_name_size
+FROM actor
+ORDER BY full_name_size DESC
+LIMIT 10;
